@@ -658,16 +658,38 @@ one thread == one call stack == one thing at a time
 // z is no longer in mem cause it was garbage collected // not used
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// function statement
-a();
-function a() {
-  console.log('a called');
-}
+// function statement aka function declaration
+// a();
+// function a() {
+//   console.log('a called');
+// }
 
 // function expression
 //b(); b not defined if we call it here diff is hoisting
-console.log(b);
-var b = function () {
-  console.log('b called ');
+//console.log(b); // undefiend
+// var b = function () {
+//   console.log('b called ');
+// };
+// b();
+
+// anonymous functions
+
+// function() {
+
+// }
+// anonymous functions are used when the function are used as values
+
+// named function expression
+// var e = function xyz() {
+//   console.log('e called ');
+// };
+// e();
+// xyz(); /// not defined
+
+// first class function
+
+var b = function (param1) {
+  return function xyz() {};
 };
-b();
+
+console.log(b());
