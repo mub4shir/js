@@ -688,8 +688,111 @@ one thread == one call stack == one thing at a time
 
 // first class function
 
-var b = function (param1) {
-  return function xyz() {};
-};
+// var b = function (param1) {
+//   return function () {};
+// };
 
-console.log(b());
+// console.log(b());
+
+// the ability of functions to use functions as values and can be passed as an argument
+// to another functions and can be returned from the functions is known as first class functions
+// function are first class citizens aka first class functions
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// callback in js
+// setTimeout(function () {
+//   console.log('timer');
+// }, 5000);
+
+// function x(y) {
+//   console.log('x');
+//   y();
+// }
+// x(function y() {
+//   console.log('y');
+// });
+
+// function attachEventListeners() {
+//   let count = 0;
+//   document.getElementById('clickMe').addEventListener('click', function xyz() {
+//     console.log('Button Clicked', ++count);
+//   });
+// }
+// attachEventListeners();
+
+// garbage  collection & removeEventListners
+
+// event listners are heavy, means it takes memory
+// even if call stack is empty,  the above program is not freeing up memory (count)
+// because you never know when someone on the page can click that button
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// event loop
+
+// the call back functions which come throught promises
+// and as well as mutation observer goes inside micro task queue
+//
+
+// stravation of call back queue || task queue caused due to
+// micro task queue as they are huge or one micro task queue
+// generates another micro task in the micro queue
+
+////////////////////////////////////////////////////////////////////////////////
+
+// JS Engine
+// parsing
+//code=> parsing => tokens => syntax parser => AST (abstract syntax tree)=> compilation
+
+// JIT compilation
+
+// interpretter
+//||\\
+// compiler
+
+// AOT (ahead of time compilation ) takes a piece of code which is
+// going to be executed later and tries to optimize it also produces byte
+// code which goes to execution phase
+// compilation
+
+// execution
+
+// memory heap and call stack
+// garbage collector
+// they are all in sync with each other
+
+// mark and sweep alogo used by garbage collector
+// other forms of optimizations
+
+// inlinning , copy elision , inline caching
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// console.log('start');
+// setTimeout(function cb() {
+//   console.log('callback');
+// }, 5000);
+
+// console.log('end');
+
+// let startDate = new Date().getTime();
+// let endDate = startDate;
+
+// while (endDate < startDate + 10000) {
+//   endDate = new Date().getTime();
+// }
+// console.log('while expires');
+
+// currency model
+///////////////////////////////////////////////////////////////////////////////////////
+
+// a function which takes another function as an argument or returns a function from
+// it is known as higher order function
+
+// function x() {
+//   console.log('hi');
+// }
+// function y(x) {
+//   x();
+// }
+//  y(x);
