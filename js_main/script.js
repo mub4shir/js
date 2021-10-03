@@ -993,3 +993,38 @@ let printMyName = printFullName.bind(name2, 'V8', 'Chrome');
 
 console.log(printMyName);
 printMyName();
+
+// this basically used to bind and keep a copy of that method and use it later
+// gives u copy which can be invoked later
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// event bubbling and event deligation
+// event bubbling is the bubbling up of the events through the dom
+// so when an event happens on a prticular element in the dom
+// it actually will bubble up through its parents
+
+// so the event deligation is opposite of event bubling its where we put the listener
+// on one of the parents elements and then we use logic inside event handler to target
+// the element we actually want that click for or whatever type of event it is
+// the whole definition is just putting  listner on a parent of what you re looking for
+// and the putting a condition here to find the target  using e.target and then doing
+// a functionaality their
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+// set local storge item
+//localStorage.setItem('name', 'John'); // remains until we clear it
+
+// set session storge item
+//localStorage.setItem('name', 'Beth'); // cleared out because we ended the session
+
+//remove from storage
+//localStorage.removeItem('name ');
+
+// get from storage
+
+// const name = localStorage.getItem('name');
+
+// // clear local storge
+// localStorage.clear();
+// console.log(name);
