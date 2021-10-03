@@ -858,32 +858,89 @@ const arr = [5, 1, 3, 2, 6];
 
 ////////////////////////////////////////////////////////////////////////////
 
-const users = [
-  { firstName: 'absdva', lastName: 'dgdfhfgwsefw', age: 89 },
-  { firstName: 'asdva', lastName: 'dgdfwsefw', age: 100 },
-  { firstName: 'sdva', lastName: 'dgdfhfgw', age: 76 },
-  { firstName: 'abva', lastName: 'dgdwsefw', age: 33 },
-];
+// const users = [
+//   { firstName: 'absdva', lastName: 'dgdfhfgwsefw', age: 89 },
+//   { firstName: 'asdva', lastName: 'dgdfwsefw', age: 100 },
+//   { firstName: 'sdva', lastName: 'dgdfhfgw', age: 76 },
+//   { firstName: 'abva', lastName: 'dgdwsefw', age: 33 },
+// ];
 
-const output1 = users.reduce((acc, curr) => {
-  if (acc[curr.age]) {
-    acc[curr.age] = ++acc[curr.age];
-  } else {
-    acc[curr.age] = 1;
-  }
-  return acc;
-}, {});
+// const output1 = users.reduce((acc, curr) => {
+//   if (acc[curr.age]) {
+//     acc[curr.age] = ++acc[curr.age];
+//   } else {
+//     acc[curr.age] = 1;
+//   }
+//   return acc;
+// }, {});
 
-const output = users.filter((x) => x.age > 34).map((x) => x.firstName);
+// const output = users.filter((x) => x.age > 34).map((x) => x.firstName);
 
-const op = users.reduce((acc, curr) => {
-  if (curr.age > 77) {
-    acc.push(curr.firstName);
-  }
-  return acc;
-}, []);
+// const op = users.reduce((acc, curr) => {
+//   if (curr.age > 77) {
+//     acc.push(curr.firstName);
+//   }
+//   return acc;
+// }, []);
 
-// console.log(output);
-// console.log(output1);
+// // console.log(output);
+// // console.log(output1);
 
-console.log(op);
+// console.log(op);
+
+/////////////////////////////////////////////////////////////////////////////
+
+//let arr = ['js', 'react'];
+
+// let object = {
+//   name: 'js',
+//   city: 'v8',
+//   getIntro: function () {
+//     console.log(this.name + 'from' + this.city);
+//   },
+// };
+// so whenever you create a js object js engine automatically
+// attaches you object with some hidden properties and functions
+// and u can acces them by object.lotofthings
+// same is true for functions
+// they get access to lot of things
+// aslo same for variables
+
+// it attaches an object to ur original object and that is how u
+// get access to those properties and methods
+
+// arr__proto__.toEveryThing
+
+// prototype chain
+// console.log(arr.__proto__);
+// console.log(Array.prototype);
+// console.log(Array.__proto__.__proto__);
+// console.log(Object.prototype);
+// console.log(arr.__proto__.__proto__.__proto__);
+// let object = {
+//   name: 'js',
+//   city: 'v8',
+//   getIntro: function () {
+//     console.log(this.name + ' from ' + this.city);
+//   },
+// };
+
+// let object2 = {
+//   name: 'node',
+// };
+// /// never do this
+// object2.__proto__ = object;
+
+// // object2 is inheriting the properties of object
+// console.log(object2.city);
+// console.log(object2.getIntro());
+
+// setting mybind to Function.prototype
+// this will give all the functions access to mybind
+// Function.prototype.mybind = function () {
+//   console.log('my bind');
+// };
+
+// function fun() {}
+// console.log(fun.mybind());
+//////////////////////////////////////////////////////////////////////////////////////
