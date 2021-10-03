@@ -944,3 +944,52 @@ const arr = [5, 1, 3, 2, 6];
 // function fun() {}
 // console.log(fun.mybind());
 //////////////////////////////////////////////////////////////////////////////////////
+
+// call appy and bind methods
+
+// each function has asscess to this keyword
+// here this will pint to name object
+
+let name1 = {
+  firstName: 'Java',
+  lastName: 'Script',
+};
+let printFullName = function (hometown, state) {
+  console.log(
+    this.firstName + ' ' + this.lastName + ' from ' + hometown + ' , ' + state
+  );
+};
+let name2 = {
+  firstName: 'React',
+  lastName: 'JS',
+};
+
+// using call method we can do a function borrowing
+// we can borrow functions of other objects and used it with data
+// of some other objects
+
+// this needs to be pointed to name2
+// printFullName.call(name1, 'V8', 'Chrome');
+// printFullName.call(name2, 'V8', 'Chrome');
+
+// console.log(name.printFullName());
+
+// the only difference between call and apply method is way we pass arguments
+
+// printFullName.apply(name1, ['V8', 'Chrome']);
+// printFullName.apply(name2, ['V8', 'Chrome']);
+
+////////////////////////////////////////////////////////////////////////////////////
+
+// bind
+// the only difference is instead of calling this method here
+// the bind method binds the current method with the object and returns
+// as the copy of that method
+
+let printMyName = printFullName.bind(name2, 'V8', 'Chrome');
+
+// it will create a copy of print full name and bind that to name2 object  and will return a
+// function || returns a method which can be called later
+
+console.log(printMyName);
+printMyName();
