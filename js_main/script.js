@@ -796,25 +796,94 @@ one thread == one call stack == one thing at a time
 //   x();
 // }
 //  y(x);
-const radius = [3, 1, 2, 4];
-const area = function (r) {
-  return Math.PI * r * r;
-};
-const circumfrence = function (radius) {
-  return 2 * Math.PI * radius;
-};
+// const radius = [3, 1, 2, 4];
+// const area = function (r) {
+//   return Math.PI * r * r;
+// };
+// const circumfrence = function (radius) {
+//   return 2 * Math.PI * radius;
+// };
 
-const diameter = function (radius) {
-  return 2 * radius;
-};
+// const diameter = function (radius) {
+//   return 2 * radius;
+// };
+// // polyfill
+// Array.prototype.calculate = function (logic) {
+//   const output = [];
+//   for (let i = 0; i < this.length; i++) {
+//     output.push(logic(this[i]));
+//   }
+//   return output;
+// };
+// console.log(radius.map(area));
+// console.log(radius.calculate(area));
+// console.log(radius.calculate(circumfrence));
+// console.log(radius.calculate(diameter));
 
-const calculate = function (radius, logic) {
-  const output = [];
-  for (let i = 0; i < radius.length; i++) {
-    output.push(logic(radius[i]));
+// map
+const arr = [5, 1, 3, 2, 6];
+
+// function double(x) {
+//   return x * 2;
+// }
+// function triple(x) {
+//   return 3 * x;
+// }
+// function binary(x) {
+//   return x.toString(2);
+// }
+// const output = arr.map((x) => x.toString(2));
+//const output = arr.map((x) => x % 2 === 0); // [ false, false, false, true, true ]
+// console.log(arr);
+//
+
+// filter
+
+// const output = arr.filter((x) => x % 2);
+// const output = arr.filter((x) => x % 2 === 0);
+
+// reduce
+
+// const output = arr.reduce((acc, curr) => {
+//   acc += curr;
+//   return acc;
+// }, 0);
+
+// const output = arr.reduce((acc, curr) => {
+//   if (curr > acc) acc = curr;
+//   return acc;
+// }, 0);
+
+// console.log(output);
+
+////////////////////////////////////////////////////////////////////////////
+
+const users = [
+  { firstName: 'absdva', lastName: 'dgdfhfgwsefw', age: 89 },
+  { firstName: 'asdva', lastName: 'dgdfwsefw', age: 100 },
+  { firstName: 'sdva', lastName: 'dgdfhfgw', age: 76 },
+  { firstName: 'abva', lastName: 'dgdwsefw', age: 33 },
+];
+
+const output1 = users.reduce((acc, curr) => {
+  if (acc[curr.age]) {
+    acc[curr.age] = ++acc[curr.age];
+  } else {
+    acc[curr.age] = 1;
   }
-  return output;
-};
-console.log(calculate(radius, area));
-console.log(calculate(radius, circumfrence));
-console.log(calculate(radius, diameter));
+  return acc;
+}, {});
+
+const output = users.filter((x) => x.age > 34).map((x) => x.firstName);
+
+const op = users.reduce((acc, curr) => {
+  if (curr.age > 77) {
+    acc.push(curr.firstName);
+  }
+  return acc;
+}, []);
+
+// console.log(output);
+// console.log(output1);
+
+console.log(op);
