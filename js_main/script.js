@@ -385,17 +385,24 @@ one thread == one call stack == one thing at a time
 // x();
 // console.log(c); // 100
 
-// #Shadowing:  Now, when a variable is declared in a certain scope having the same name defined on its outer scope and when we call the variable from the inner scope, the value assigned to the variable in the inner scope is the value that will be stored in the variable in the memory space. This is known as Shadowing or Variable Shadowing. In JavaScript, the introduction of let and const in ECMAScript 6 along with block scoping allows variable shadowing.
+// #Shadowing:  Now, when a variable is declared in a certain scope having
+//the same name defined on its outer scope and when we call the variable from
+//the inner scope, the value assigned to the variable in the inner scope is the
+//value that will be stored in the variable in the memory space. This is known
+//as Shadowing or Variable Shadowing. In JavaScript, the introduction of let and const
+//in ECMAScript 6 along with block scoping allows variable shadowing.
 
-// # Illegal Shadowing: Now, while shadowing a variable, it should not cross the boundary of the scope, i.e. we can shadow var variable by let variable but cannot do the opposite. So, if we try to shadow let variable by var variable, it is known as Illegal Shadowing and it will give the error as “variable is already defined.”
+// # Illegal Shadowing: Now, while shadowing a variable, it should not cross the boundary
+// of the scope, i.e. we can shadow var variable by let variable but cannot do the opposite.
+// So, if we try to shadow let variable by var variable, it is known as Illegal Shadowing and
+//it will give the error as “variable is already defined.”
 
 // #Note: Arrow functions also follow the same scope and variable shadowing rule.
 
-// // not valid with throw error
-// let a =20;
+// // not valid will throw error
+// let a = 20;
 // {
-//     var a=20;
-
+//   var a = 20;
 // }
 
 // # if you want to shadow let variable inside the block scope using var you cannot
@@ -404,11 +411,12 @@ one thread == one call stack == one thing at a time
 // /////
 
 // valid cases :
-// let a =20;
+// let a = 20;
 // {
-//     let a=20;
-
+//   let a = 1000;
+//   console.log(a);
 // }
+// console.log(a);
 // var a =20;
 // {
 //     let a=20;
@@ -438,7 +446,11 @@ one thread == one call stack == one thing at a time
 
 // ******************************************************************************
 
-// # A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+// # A closure is the combination of a function bundled together (enclosed) with
+//references to its surrounding state (the lexical environment). In other words,
+// a closure gives you access to an outer function’s scope from an inner function.
+// In JavaScript, closures are created every time a function is created, at function
+//creation time.
 
 // function x(){
 //     var a =7;
@@ -536,7 +548,7 @@ one thread == one call stack == one thing at a time
 //   console.log('hello from js');
 // }
 // x();
-///6 6 6 6 6
+//6 6 6 6 6
 ///////////////////////////////////////////////////
 
 // function x() {
@@ -599,6 +611,7 @@ one thread == one call stack == one thing at a time
 // var close = outest()('hello');
 // close();
 ////////////////////////////////////////////////////////////////////////////////////////
+
 // data privacy using closures
 
 // function counter() {
@@ -821,7 +834,7 @@ one thread == one call stack == one thing at a time
 // console.log(radius.calculate(diameter));
 
 // map
-const arr = [5, 1, 3, 2, 6];
+// const arr = [5, 1, 3, 2, 6];
 
 // function double(x) {
 //   return x * 2;
@@ -950,19 +963,19 @@ const arr = [5, 1, 3, 2, 6];
 // each function has asscess to this keyword
 // here this will pint to name object
 
-let name1 = {
-  firstName: 'Java',
-  lastName: 'Script',
-};
-let printFullName = function (hometown, state) {
-  console.log(
-    this.firstName + ' ' + this.lastName + ' from ' + hometown + ' , ' + state
-  );
-};
-let name2 = {
-  firstName: 'React',
-  lastName: 'JS',
-};
+// let name1 = {
+//   firstName: 'Java',
+//   lastName: 'Script',
+// };
+// let printFullName = function (hometown, state) {
+//   console.log(
+//     this.firstName + ' ' + this.lastName + ' from ' + hometown + ' , ' + state
+//   );
+// };
+// let name2 = {
+//   firstName: 'React',
+//   lastName: 'JS',
+// };
 
 // using call method we can do a function borrowing
 // we can borrow functions of other objects and used it with data
@@ -986,13 +999,13 @@ let name2 = {
 // the bind method binds the current method with the object and returns
 // as the copy of that method
 
-let printMyName = printFullName.bind(name2, 'V8', 'Chrome');
+// let printMyName = printFullName.bind(name2, 'V8', 'Chrome');
 
 // it will create a copy of print full name and bind that to name2 object  and will return a
 // function || returns a method which can be called later
 
-console.log(printMyName);
-printMyName();
+// console.log(printMyName);
+// printMyName();
 
 // this basically used to bind and keep a copy of that method and use it later
 // gives u copy which can be invoked later
@@ -1028,3 +1041,26 @@ printMyName();
 // // clear local storge
 // localStorage.clear();
 // console.log(name);
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// function currying using bind
+
+// let multiply = function (x, y) {
+//   console.log(x * y);
+// };
+
+let multiply = function (x) {
+  return function (y) {
+    console.log(x * y);
+  };
+};
+
+let multiplyByTwo = multiply(2);
+multiplyByTwo(3);
+
+let multiplyByThree = multiply(3);
+multiplyByThree(10);
+
+// let multiplyByTwo = multiply.bind(this, 2);
+// multiplyByTwo(5);
