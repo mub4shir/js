@@ -1103,13 +1103,60 @@ const myPromise = new Promise((resolve, reject) => {
   }
 });
 
-const demoPromise = () => {
-  myPromise
-    .then((msg) => {
-      console.log('Success:' + msg);
-    })
-    .catch((msg) => {
-      console.log('Error:' + msg);
-    });
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    const message = `Hi, How are You!`;
+    resolve(message);
+  });
 };
+
+// const demoPromise = () => {
+//   myPromise
+//     .then(helloPromise)
+//     .then((msg) => {
+//       console.log('Success: ' + msg);
+//     })
+//     .catch((msg) => {
+//       console.log('Error: ' + msg);
+//     });
+// };
+// demoPromise();
+
+// const printString = (str) => {
+//   console.log(str);
+// };
+// const printMyAsync = async () => {
+//   await printString('one');
+//   await printString('two');
+//   await printString('three');
+// };
+
+// printMyAsync();
+
+/*
+
+The await keyword is used in an async function to 
+ensure that all promises returned in the async function
+are synchronized, ie. they wait for each other. Await 
+eliminates the use of callbacks in .then() and .catch(). 
+In using async and await, async is prepended when returning
+a promise, await is prepended when calling a promise. try and
+catch are also used to get the rejection value of an async function.
+   */
+
+const demoPromise = async () => {
+  try {
+    let message = await myPromise;
+    message = await helloPromise();
+    console.log(message);
+  } catch (msg) {
+    console.log('Error: ' + msg);
+  }
+};
+
+(async () => {
+  const date = await new Date();
+  console.log(date);
+})();
+
 demoPromise();
