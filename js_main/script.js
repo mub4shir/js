@@ -1050,17 +1050,66 @@ one thread == one call stack == one thing at a time
 //   console.log(x * y);
 // };
 
-let multiply = function (x) {
-  return function (y) {
-    console.log(x * y);
-  };
-};
+// let multiply = function (x) {
+//   return function (y) {
+//     console.log(x * y);
+//   };
+// };
 
-let multiplyByTwo = multiply(2);
-multiplyByTwo(3);
+// let multiplyByTwo = multiply(2);
+// multiplyByTwo(3);
 
-let multiplyByThree = multiply(3);
-multiplyByThree(10);
+// let multiplyByThree = multiply(3);
+// multiplyByThree(10);
 
 // let multiplyByTwo = multiply.bind(this, 2);
 // multiplyByTwo(5);
+
+// Async vs Defer
+// With async, the file gets downloaded asynchronously and then executed as soon as it’s downloaded.
+
+// With defer, the file gets downloaded asynchronously, but executed only when the document parsing is
+// completed. With defer, scripts will execute in the same order as they are called. This makes defer the attribute
+// of choice when a script depends on another script. For example, if you’re using jQuery as well as other scripts
+// that depend on it, you’d use defer on them (jQuery included), making sure to call jQuery before the dependent scripts.
+
+// A good strategy is to use async when possible, and then defer when async isn’t an option.
+
+// 👉Note that both attributes don’t have any effect on inline scripts.
+
+// var val = 'outside';
+// function bar() {
+//   console.log(val);
+//   var val = 'inside';
+// }
+// bar();
+
+// var x = 100000000;
+// function getName() {
+//   console.log(this.x);
+// }
+// getName();
+// var x = (2, 3, 5);
+// console.log(x);
+
+const myPromise = new Promise((resolve, reject) => {
+  const cond = true;
+  if (cond) {
+    setTimeout(() => {
+      resolve('Promise is resolved!');
+    }, 3000);
+  } else {
+    reject('Promise is rejected!');
+  }
+});
+
+const demoPromise = () => {
+  myPromise
+    .then((msg) => {
+      console.log('Success:' + msg);
+    })
+    .catch((msg) => {
+      console.log('Error:' + msg);
+    });
+};
+demoPromise();
