@@ -1164,17 +1164,21 @@ catch are also used to get the rejection value of an async function.
 ///////////////////////////////////////////////////////////////////////////////////
 //cors
 
-fetch('http://localhost:3000/data')
+fetch('http://localhost:3000/data', { method: 'PUT', credentials: 'include' })
   .then((res) => res.json())
   .then((data) => console.log(data));
 /////////////////////////////////////////////////////
 const express = require('express');
 const cors = require('cors');
-app.use(cors, {
-  origin: '*',
-});
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'POST'],
+    credentials: true,
+  })
+);
 const app = express();
-app.get('/data', (req, res) => {
+app.put('/data', (req, res) => {
   res.json({ name: 'cors', type: 'check' });
 });
 app.listen(3000);
