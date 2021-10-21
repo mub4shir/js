@@ -1144,19 +1144,37 @@ a promise, await is prepended when calling a promise. try and
 catch are also used to get the rejection value of an async function.
    */
 
-const demoPromise = async () => {
-  try {
-    let message = await myPromise;
-    message = await helloPromise();
-    console.log(message);
-  } catch (msg) {
-    console.log('Error: ' + msg);
-  }
-};
+// const demoPromise = async () => {
+//   try {
+//     let message = await myPromise;
+//     message = await helloPromise();
+//     console.log(message);
+//   } catch (msg) {
+//     console.log('Error: ' + msg);
+//   }
+// };
 
-(async () => {
-  const date = await new Date();
-  console.log(date);
-})();
+// (async () => {
+//   const date = await new Date();
+//   console.log(date);
+// })();
 
-demoPromise();
+// demoPromise();
+
+///////////////////////////////////////////////////////////////////////////////////
+//cors
+
+fetch('http://localhost:3000/data')
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+/////////////////////////////////////////////////////
+const express = require('express');
+const cors = require('cors');
+app.use(cors, {
+  origin: '*',
+});
+const app = express();
+app.get('/data', (req, res) => {
+  res.json({ name: 'cors', type: 'check' });
+});
+app.listen(3000);
