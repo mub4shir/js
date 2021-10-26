@@ -1092,23 +1092,23 @@ one thread == one call stack == one thing at a time
 // var x = (2, 3, 5);
 // console.log(x);
 
-const myPromise = new Promise((resolve, reject) => {
-  const cond = true;
-  if (cond) {
-    setTimeout(() => {
-      resolve('Promise is resolved!');
-    }, 3000);
-  } else {
-    reject('Promise is rejected!');
-  }
-});
+// const myPromise = new Promise((resolve, reject) => {
+//   const cond = true;
+//   if (cond) {
+//     setTimeout(() => {
+//       resolve('Promise is resolved!');
+//     }, 3000);
+//   } else {
+//     reject('Promise is rejected!');
+//   }
+// });
 
-const helloPromise = () => {
-  return new Promise((resolve, reject) => {
-    const message = `Hi, How are You!`;
-    resolve(message);
-  });
-};
+// const helloPromise = () => {
+//   return new Promise((resolve, reject) => {
+//     const message = `Hi, How are You!`;
+//     resolve(message);
+//   });
+// };
 
 // const demoPromise = () => {
 //   myPromise
@@ -1164,21 +1164,43 @@ catch are also used to get the rejection value of an async function.
 ///////////////////////////////////////////////////////////////////////////////////
 //cors
 
-fetch('http://localhost:3000/data', { method: 'PUT', credentials: 'include' })
-  .then((res) => res.json())
-  .then((data) => console.log(data));
-/////////////////////////////////////////////////////
-const express = require('express');
-const cors = require('cors');
-app.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'PUT', 'POST'],
-    credentials: true,
-  })
-);
-const app = express();
-app.put('/data', (req, res) => {
-  res.json({ name: 'cors', type: 'check' });
-});
-app.listen(3000);
+// fetch('http://localhost:3000/data', { method: 'PUT', credentials: 'include' })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+// /////////////////////////////////////////////////////
+// const express = require('express');
+// const cors = require('cors');
+// app.use(
+//   cors({
+//     origin: '*',
+//     methods: ['GET', 'PUT', 'POST'],
+//     credentials: true,
+//   })
+// );
+// const app = express();
+// app.put('/data', (req, res) => {
+//   res.json({ name: 'cors', type: 'check' });
+// });
+// app.listen(3000);
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  printNameArrow() {
+    setTimeout(() => {
+      console.log('Arrow: ' + this.name);
+    }, 100);
+  }
+  printNameFunction() {
+    setTimeout(function () {
+      console.log('Function: ' + this.name);
+    }, 100);
+  }
+}
+let person = new Person('Bob');
+
+person.printNameArrow();
+person.printNameFunction();
+console.log(this.name);
