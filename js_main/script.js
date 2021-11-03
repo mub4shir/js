@@ -1183,24 +1183,63 @@ catch are also used to get the rejection value of an async function.
 // });
 // app.listen(3000);
 
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
 
-  printNameArrow() {
-    setTimeout(() => {
-      console.log('Arrow: ' + this.name);
-    }, 100);
-  }
-  printNameFunction() {
-    setTimeout(function () {
-      console.log('Function: ' + this.name);
-    }, 100);
-  }
-}
-let person = new Person('Bob');
+//   printNameArrow() {
+//     setTimeout(() => {
+//       console.log('Arrow: ' + this.name);
+//     }, 100);
+//   }
+//   printNameFunction() {
+//     setTimeout(function () {
+//       console.log('Function: ' + this.name);
+//     }, 100);
+//   }
+// }
+// let person = new Person('Bob');
 
-person.printNameArrow();
-person.printNameFunction();
-console.log(this.name);
+// person.printNameArrow();
+// person.printNameFunction();
+// console.log(this.name);
+
+let counter = 0;
+
+const getData = () => {
+  console.log('Fetching data... ', counter++);
+};
+
+const debounce = function (fn, d) {
+  let timer;
+  return function () {
+    let context = this,
+      args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      getData.apply(context, args);
+    }, d);
+  };
+};
+const betterFunction = debounce(getData, 300);
+let counter = 0;
+const expensive = () => {
+  console.log('Expensive...', counter++);
+};
+const throtle = function (fn, d) {
+  let flag = true;
+  return function () {
+    let context = this,
+      args = arguments;
+    if (flag) {
+      fn.apply(context, args);
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, d);
+    }
+  };
+};
+const betterFunction = throtle(expensive, 500);
+window.addEventListener('resize', betterFunction);
