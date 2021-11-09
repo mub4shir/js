@@ -961,7 +961,7 @@ one thread == one call stack == one thing at a time
 // call appy and bind methods
 
 // each function has asscess to this keyword
-// here this will pint to name object
+// here this will point to name object
 
 // let name1 = {
 //   firstName: 'Java',
@@ -1205,41 +1205,63 @@ catch are also used to get the rejection value of an async function.
 // person.printNameFunction();
 // console.log(this.name);
 
-let counter = 0;
+// let counter = 0;
 
-const getData = () => {
-  console.log('Fetching data... ', counter++);
-};
+// const getData = () => {
+//   console.log('Fetching data... ', counter++);
+// };
 
-const debounce = function (fn, d) {
-  let timer;
-  return function () {
-    let context = this,
-      args = arguments;
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      getData.apply(context, args);
-    }, d);
-  };
-};
-const betterFunction = debounce(getData, 300);
-let counter = 0;
-const expensive = () => {
-  console.log('Expensive...', counter++);
-};
-const throtle = function (fn, d) {
-  let flag = true;
-  return function () {
-    let context = this,
-      args = arguments;
-    if (flag) {
-      fn.apply(context, args);
-      flag = false;
-      setTimeout(() => {
-        flag = true;
-      }, d);
-    }
-  };
-};
-const betterFunction = throtle(expensive, 500);
-window.addEventListener('resize', betterFunction);
+// const debounce = function (fn, d) {
+//   let timer;
+//   return function () {
+//     let context = this,
+//       args = arguments;
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       getData.apply(context, args);
+//     }, d);
+//   };
+// };
+// const betterFunction = debounce(getData, 300);
+// let counter = 0;
+// const expensive = () => {
+//   console.log('Expensive...', counter++);
+// };
+// const throtle = function (fn, d) {
+//   let flag = true;
+//   return function () {
+//     let context = this,
+//       args = arguments;
+//     if (flag) {
+//       fn.apply(context, args);
+//       flag = false;
+//       setTimeout(() => {
+//         flag = true;
+//       }, d);
+//     }
+//   };
+// };
+// const betterFunction = throtle(expensive, 500);
+// window.addEventListener('resize', betterFunction);
+for (var i = 0; i < 5; i++) {
+  (function (x) {
+    setTimeout(function () {
+      console.log(x);
+    }, x * 1000);
+  })(i);
+}
+
+// console.log(a);
+// console.log(b);
+// var a;
+// (function () {
+//   console.log(1);
+//   setTimeout(function () {
+//     console.log(2);
+//   }, 1000);
+//   setTimeout(function () {
+//     console.log(3);
+//   }, 0);
+//   Promise.resolve(5).then((r) => console.log(r));
+//   console.log(4);
+// })();
