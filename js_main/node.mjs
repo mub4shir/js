@@ -122,13 +122,20 @@ const eventEmitter = new EventEmitter();
 // eventEmitter.removeListener('myEvent', func1);
 // console.log(eventEmitter.eventNames());
 
-// removeAllListeners()
-function func1() {
-  console.log('EVENT TRIGGERED');
-}
+// // removeAllListeners()
+// function func1() {
+//   console.log('EVENT TRIGGERED');
+// }
 
-eventEmitter.on('myEvent', func1);
-eventEmitter.on('myEvent2', func1);
+// eventEmitter.on('myEvent', func1);
+// eventEmitter.on('myEvent2', func1);
 
-eventEmitter.removeAllListeners();
-console.log(eventEmitter.eventNames());
+// eventEmitter.removeAllListeners();
+// console.log(eventEmitter.eventNames());
+
+console.log(parseInt('100', 2));
+
+const arr = [1, 2, 3, 4];
+
+const newArr = arr.filter((e) => e % 2);
+console.log(10 + 'aaa');
